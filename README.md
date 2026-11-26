@@ -13,10 +13,23 @@ x-persona-distill/
     └── sample-batch.xrb-persona.json  # xrb-persona-v1 批量格式示例
 ```
 
-## 前置条件
+## 接入推特数据源（采集工具推荐）
 
-- Node.js 18+
-- 已安装并登录 [`twitter-cli`](https://github.com/jackwener/twitter-cli)（执行 `twitter status` 显示已登录即可）
+本 Skill 需要先获取目标博主的公开推文与回复语料（建议 500～1,200 条）。你可以按自己的习惯任选以下开源工具获取数据：
+
+| 工具 | 仓库 | 适合场景 | 说明 |
+| --- | --- | --- | --- |
+| **twitter-cli**（默认推荐） | [public-clis/twitter-cli](https://github.com/public-clis/twitter-cli) | AI Agent / 命令行一键全自动 | 本 Skill 内置脚本默认调用它；支持自动提取浏览器 Cookie、防风控 TLS 模拟、`max_id` 翻页与 JSON 输出 |
+| **twitter-web-exporter** | [prinsss/twitter-web-exporter](https://github.com/prinsss/twitter-web-exporter) | 零命令行 / 浏览器直接导出 | 油猴脚本，在 X 网页里直接把博主推文/回复导出成 JSON 或 CSV，再丢给 AI 按本 Skill 格式提炼 |
+| **twscrape** | [vladkens/twscrape](https://github.com/vladkens/twscrape) | 大规模批量采集 | Python 异步爬虫库与 CLI，支持多账号池与自动限流轮换，适合一次批量提炼大量博主 |
+| **twikit** | [d60/twikit](https://github.com/d60/twikit) | Python 二次开发定制 | 无需官方 API Key 的免费 Python Twitter 内部接口库 |
+
+> **使用其他工具导出的数据**：即使不用 `twitter-cli`，只要你用 `twitter-web-exporter`、`twscrape` 或 `twikit` 导出了博主的 JSON/CSV 推文文件，直接把文件交给装了本 Skill 的 AI，它同样会按 `xrb-persona-v1` 规范蒸馏出可导入插件的语气包。
+
+### 快速配置默认工具（`twitter-cli`）
+
+- 需要 Node.js 18+ 与 Python（推荐用 `uv` 或 `pipx` 安装）
+- 参考 [public-clis/twitter-cli](https://github.com/public-clis/twitter-cli) 安装并完成浏览器 Cookie 授权，终端运行 `twitter status` 显示已登录即可使用本仓库的自动化脚本。
 
 ## 安装 Skill
 
