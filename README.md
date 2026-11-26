@@ -1,6 +1,6 @@
 # x-persona-distill
 
-把任意 X（Twitter）博主的真实回复与原贴（默认采集 1,000+ 条，跨时间窗口）做量化统计与观点聚类，自动蒸馏成 **`xrb-persona-v1`** 标准语气包 JSON，可直接一键导入 **X手打姬 (`x-reply-batch`)** 插件。
+把任意 X（Twitter）博主的真实回复与原贴（默认采集 1,000+ 条，跨时间窗口）做量化统计与观点聚类，自动蒸馏成 **`xrb-persona-v1`** 标准语气包 JSON，可直接一键导入 **X手打姬 (`X-reply-waifu`)** 插件。
 
 ## 目录结构
 
@@ -63,7 +63,7 @@ node scripts/fetch_and_analyze.mjs <TwitterHandle> --target 1100 --out-dir ./per
 - `<handle>-corpus.json`：去重后的非转推语料（回复 + 原贴）
 - `<handle>-report.txt`：句长分位数、标点习惯、emoji 频率 Top 25、高赞原贴、长回复与跨时间抽样
 
-## 导入到「X手打姬」插件（v1.17.0+）
+## 导入到「X手打姬 (X-reply-waifu)」插件（v1.17.0+）
 
 1. 打开 X 页面上的插件面板，点击 **「学语气」**。
 2. 在弹窗顶部的 **「语气包」** 区域：
