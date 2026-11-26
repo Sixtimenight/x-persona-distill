@@ -1,0 +1,6 @@
+personas/
+*-corpus.json
+*-report.txt
+cacert.pem
+.DS_Store
+node_modules/
